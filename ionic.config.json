@@ -1,0 +1,7 @@
+{
+  "name": "regime",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
