@@ -1,0 +1,124 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Créer une recette</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <mat-card>
+          <div class="photo-container">
+            <img *ngIf="!photoIsUploading" [src]="photoShow">
+            <mat-progress-spinner *ngIf="photoIsUploading" mode="indeterminate"></mat-progress-spinner>
+            <button><ion-icon name="camera-outline" (click)="takePhoto()"></ion-icon></button>
+            <button><ion-icon name="image-outline" (click)="selectPhoto()"></ion-icon></button>
+          </div>
+          <form [formGroup]="addRecipeForm" class="addRecipeForm">
+            <mat-form-field class="addForm-field">
+              <input matInput class="recipe-name" placeholder="Nom de la recette" formControlName="name">
+              <mat-error *ngIf="nameFormControl.hasError('required')">
+                Un nom de recette est nécessaire
+              </mat-error>
+              <mat-error *ngIf="nameFormControl.hasError('alreadyCreated')">
+                Cette recette a déjà été ajoutée
+              </mat-error>
+            </mat-form-field>
+            
+            <mat-form-field>
+              <input matInput placeholder="Nombre de personnes" type="number" formControlName="peoples">
+              <mat-error *ngIf="peoplesFormControl.hasError('required')">
+                Veuillez indiquer le nombre de personnes
+              </mat-error>
+              <mat-error *ngIf="peoplesFormControl.hasError('pattern')">
+                Veuillez indiquer une valeur correcte
+              </mat-error>
+            </mat-form-field>
+      
+            <div class='ingredients-container'>
+              <div class="header">
+                <h3>Ingrédients</h3>
+              </div>
+      
+            <ng-form [formGroup]="addIngredientForm" class="addIngredient-form">
+                <mat-form-field class="ingredientName-field">
+                  <input  matInput class="ingredient-name" placeholder="Nom de l'ingrédient" [matAutocomplete]="auto" formControlName="ingredientName">
+                  <mat-autocomplete panelWidth="auto" #auto="matAutocomplete">
+                    <mat-option *ngFor="let ingredient of filteredIngredients | async" [value]="ingredient.name">
+                      <img class="thumbnail" aria-hidden [src]="ingredient.photoUrl" height="25">
+                      <span>{{ingredient.name}}</span> |
+                      <span *ngIf="ingredient.unit != ''"><small>1 {{ ingredient.unit }} = {{ this.roundPoints(ingredient.ratio) }} Point<span *ngIf="ingredient.ratio >=2">s</span></small></span>
+                      <span *ngIf="ingredient.unit == ''"><small>1 {{ ingredient.name }} = {{ this.roundPoints(ingredient.ratio) }} Point<span *ngIf="ingredient.ratio >=2">s</span></small></span>
+                    </mat-option>
+                  </mat-autocomplete>
+                  <mat-error *ngIf="ingredientNameFormControl.hasError('required')">
+                    Veuillez selectionner un ingrédient
+                  </mat-error>
+                  <mat-error *ngIf="ingredientNameFormControl.hasError('alreadyAdded')">
+                      Cet ingrédient a déjà été rajouté à la recette
+                  </mat-error>
+                  <mat-error *ngIf="ingredientNameFormControl.hasError('ingredientNotFound') && !ingredientNameFormControl.hasError('required')">
+                      Cet ingrédient n'existe pas encore, <a routerLink="/alimentation/ingredients/ajouter-ingredient">cliquez ici pour créer des ingrédients</a>
+                  </mat-error>
+                </mat-form-field>
+    
+                <mat-form-field class="ingredientQuantity-field">
+                  <input matInput class="ingredient-quantity" placeholder="Quantité {{ currentIngrUnit }}" formControlName="ingredientQuantity">
+                  <mat-error *ngIf="ingredientQuantityFormControl.hasError('required')">
+                    Veuillez indiquer une quantité
+                  </mat-error>
+                  <mat-error *ngIf="ingredientQuantityFormControl.hasError('pattern')">
+                    Veuillez indiquer une valeur correcte
+                  </mat-error>
+                </mat-form-field>
+    
+                <button type="button" class="btn-add-circle" (click)="onAddIngredient()" [disabled]="addIngredientForm.invalid || listIngredientsFormArray.controls.length >= maxIngredients">
+                    <i class="material-icons">
+                    add_circle
+                    </i>
+                </button>
+            </ng-form>
+    
+            <div formArrayName="ingredients" class="list-ingredients">
+              <div *ngIf="listIngredientsFormArray.controls.length > 0" class="header-row">
+                <span class="ingredient-label">Ingrédient</span>
+                <span class="quantity-label">Quantité</span>
+                <span class="points-label">Points</span>
+                <mat-divider></mat-divider>
+              </div>
+              <div class="ingredient-single" *ngFor="let ingredientControl of listIngredientsFormArray.controls; let i = index">
+                <div class="ingredient-name">
+                  <img class="thumbnail" aria-hidden [src]="ingredientControl.value.photoUrl" width="60" height="40">
+                  <span>{{ ingredientControl.value.name }}</span>
+                </div>
+                <span *ngIf="ingredientControl.value.unit != ''" class="ingredient-quantity">{{ ingredientControl.value.quantity }} {{ ingredientControl.value.unit }}</span>
+                <span *ngIf="ingredientControl.value.unit == ''" class="ingredient-quantity">{{ ingredientControl.value.quantity }}</span>
+                <span class="ingredient-points">{{ ingredientControl.value.points }}</span>
+                <button>
+                <i (click)=onDeleteIngredient(ingredientControl) class="material-icons">
+                  delete
+                </i>
+                </button>
+              </div>
+            </div>
+            <div *ngIf="totalPoints" class="total">Points totaux : {{ totalPoints }}</div>
+    
+            <mat-error class="error-max-ingredients" *ngIf="listIngredientsFormArray.controls.length == maxIngredients">
+                La quantité d'ingrédients maximal pour cette recette a été atteinte.
+            </mat-error>
+          </div>
+    
+    
+            <button type="button" mat-raised-button (click)="onAddRecipe()" [disabled]="addRecipeForm.invalid">
+                Ajouter
+            </button>
+          </form>
+        </mat-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,31 @@
+/********************** TOOLBAR *********************/
+ion-header ion-toolbar { --opacity: 1; }
+ion-header ion-toolbar p { margin: 0; margin-left: 10%; z-index: 0;}
+ion-header ion-toolbar i { float: right; }
+ion-header ion-toolbar i.back{ 
+    position: absolute;
+    top: 17px;
+    left: 12px;
+    font-size: 25px; 
+    z-index: 1;
+}
+
+.mat-form-field.search-bar{ margin-left: 30px; }
+
+.mat-card.ingredients {
+    box-shadow: 3px 19px 41px -1px rgba(0, 0, 0, 0.2), 5px 5px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    padding: 0;
+    touch-action: unset !important;
+}
+.mat-card.ingredients .mat-card-header { display: block; text-align: center; padding: 5px; font-size: 15px; }
+.mat-card.ingredients .mat-card-header .ingredient-name{ word-break: keep-all; }
+.mat-card.ingredients .mat-card-content{ text-align: center; padding: 10px 0 10px 0;}
+.mat-card.ingredients .mat-card-image{ width: 100%; margin: 0; transition: 0.5s; }
+
+.mat-card.ingredients.selected .mat-card-header, .mat-card.selected .mat-card-content{ background-color: #a22424; }
+.mat-card.ingredients.selected .mat-card-header{ border-top-left-radius: 3px; border-top-right-radius: 3px; }
+.mat-card.ingredients.selected .mat-card-content{ border-bottom-left-radius: 3px; border-bottom-right-radius: 3px; }
+
+ion-infinite-scroll{ margin-top: 50px; }
+
+.mat-paginator{ display: none; }

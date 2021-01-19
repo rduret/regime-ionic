@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>single-recipe</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <!-- Bannière -->
+    <ion-row>
+      <ion-col>
+        <img [src]="recipe.photoUrl">
+        <h2>{{ recipe.name }}</h2>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

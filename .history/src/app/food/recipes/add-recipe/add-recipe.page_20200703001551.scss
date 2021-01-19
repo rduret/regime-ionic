@@ -1,0 +1,184 @@
+/***************** Général ***************/
+
+.mat-card .form-container{display: flex;  flex-direction: row;}
+.mat-raised-button {color: #fff; background-color: #a22424de;}
+
+/*********** Photo ************/
+
+.photo-container{margin: auto !important; text-align: center;}
+.photo-container img{max-width: 90%;} 
+.photo-container .mat-progress-spinner circle, .mat-spinner circle {stroke: #a22424de;}
+.photo-container button{
+    border: black 1px solid;
+    border-radius: 50%;
+    padding: 5px;
+    margin: 5px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    outline: none;
+}
+.photo-container button:active{background-color: #a22424de;}
+.photo-container ion-icon{ font-size: 25px; margin: 10px; }
+
+/************ Formulaire recette ************/
+
+.addRecipeForm{display: flex;  flex-direction: column;}
+
+/************* Formulaire ingrédients ***************/
+
+.ingredients-container{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border: solid 4px #949494;
+    border-radius: 3px;
+    padding: 30px 30px 30px 30px;
+}
+
+.ingredients-container .header{
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.ingredients-container .header h3{
+    color: #000;
+    font-size: 25px;
+    font-family: inherit;
+    font-weight: 400;
+}
+
+.ingredients-container .header span{
+    width: 15%;
+    margin-left: 34%;
+}
+
+.addIngredient-form>div{display: flex; flex-direction: row;}
+.ingredientName-field{max-width: 50%;}
+.ingredientQuantity-field{max-width: 30%; margin-left: 20px;}
+.ingredients-container .mat-form-field{margin-bottom: 35px;}
+
+.header-row{margin-bottom: 30px;}
+.header-row .ingredient-label{margin-left: 10%;}
+.header-row .quantity-label{position: absolute; left: 25%;}
+.header-row .points-label{position: absolute; left: 35%;}
+.header-row .mat-divider-horizontal{position: relative; margin-bottom: 15px;}
+
+.btn-add-circle{
+    position: relative;
+    top: 20px;
+    background-color: transparent; 
+    border: none; margin-left: 10px; 
+    height: fit-content;
+}
+.btn-add-circle:enabled{color: #a22424}
+
+.thumbnail{ vertical-align: middle;  margin-right: 8px; }
+
+.ingredient-single{
+    display: flex;
+    flex-wrap: nowrap;
+    margin-bottom: 10px;
+}
+
+.ingredient-single div.ingredient-name{text-align: center;}
+
+.ingredient-single span.ingredient-quantity{
+    position: absolute;
+    left: 25%;
+    text-align: center;
+    padding-top: 7px;
+}
+
+.ingredient-single span.ingredient-points{
+    position: absolute;
+    left: 36.5%;
+    text-align: center;
+    padding-top: 7px;
+}
+
+.ingredient-single button{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 40%;
+    background: none;
+    border: none;
+    margin-top: 3px;
+    border-radius: 50%;
+}
+
+.ingredient-single button:hover{ background-color: #dedede; }
+
+.ingredient-single i{
+    position: relative;
+    top: 4px;
+    left: -1px;
+    font-size: 21px;
+    color: #a22424;
+    cursor: pointer;
+}
+
+.total{text-align: center; margin-top: 20px;}
+
+.ingredient-single .thumbnail{border-radius: 50%;}
+
+.error-max-ingredients{
+    font-size: 12px;
+    margin-top: 25px;
+}
+  
+
+/****************************** RESPONSIVE ********************************/
+
+/* @media (max-width: 1100px){
+    .mat-card .form-container {
+        display: flex;
+        align-items: center;
+        flex-direction: column-reverse;
+    }
+
+    .addRecipeForm{
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    .addIngredient-form > div{
+        justify-content: center;
+    }
+
+    .header-row .ingredient-label{margin-left: 9%;}
+    .header-row .quantity-label{position: absolute; left: 40%;}
+    .header-row .points-label{position: absolute; left: 72%;}
+    .header-row .mat-divider-horizontal{position: relative; margin-bottom: 15px;}
+
+    .ingredient-single div.ingredient-name{margin-left: 4%;}
+    .ingredient-single span.ingredient-quantity{left: 40%;}
+    .ingredient-single span.ingredient-points{left: 72%;} 
+    .ingredient-single button{left: 85%;}
+
+    .right-side{ text-align: center;}
+    .right-side img{ max-width: 80%; }
+}
+
+@media (max-width: 700px){
+
+    .header-row .quantity-label{position: absolute; left: 50%;}
+
+    .ingredient-single span.ingredient-quantity{left: 50%;}
+
+}
+
+*/
+@media (max-width: 1200px){
+    .ingredientName-field{max-width: 50%;}
+}
+/*
+@media (min-width: 1100px) and (max-width: 1300px){
+    .addIngredientForm{margin-right: 0px;}
+}
+ */
+
+
+
+
+
+

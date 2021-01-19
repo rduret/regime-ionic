@@ -1,0 +1,34 @@
+/****************** HEADER ********************/
+ion-header ion-toolbar i { float: right; }
+
+/****************** PHOTO ********************/
+.photo-container{text-align: center;}
+.photo-container button{
+    border: black 1px solid;
+    border-radius: 50%;
+    padding: 5px;
+    margin: 5px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    outline: none;
+}
+.photo-container button:active{background-color: #a22424de;}
+.photo-container img{max-width: 100%;}
+
+/********** SELECTION PHOTO ***********/
+ion-icon{ font-size: 25px; margin: 10px; }
+
+/*********** FORMULAIRE *************/
+.editIngredientForm{
+    display: flex;  
+    flex-direction: column;
+    align-items: center;
+}
+.mat-form-field{ margin-bottom: 10px; width: 90%; }
+.mat-focused .placeholder{ color: blue; }
+.placeholder{ font-size: 14px !important; }
+
+.mat-progress-spinner{ margin: auto; }
+::ng-deep .mat-progress-spinner circle, .mat-spinner circle{ stroke: #a22424de; }
+
+.mat-raised-button {color: #fff; background-color: #a22424de; margin-top: 25px; width: 45%;}

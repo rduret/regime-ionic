@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar *ngIf="!selectMode" color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Liste des ingrédients</ion-title>
+  </ion-toolbar>
+  <ion-toolbar *ngIf="selectMode" class="selection-toolbar" color="primary">
+    <i (click)="closeSelection()" class="material-icons back">arrow_back</i>
+    <ion-title>
+      <p *ngIf="getSizeIngredientsToDelete() > 1"> {{ getSizeIngredientsToDelete() }} ingrédients sélectionnés <i (click)="deleteIngredients()" class="material-icons">delete</i></p>
+      <p *ngIf="getSizeIngredientsToDelete() <= 1"> {{ getSizeIngredientsToDelete() }} ingrédient sélectionné <i (click)="deleteIngredients()" class="material-icons">delete</i></p>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary">
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+  <ion-fab-button routerLink="ajouter-ingredient">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+  </ion-fab>
+  <ion-grid>
+      <ion-row>
+        <mat-form-field class="search-bar">
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Rechercher un ingrédient">
+        </mat-form-field>
+      </ion-row>
+
+      <ion-row class="list-ingredients-container" id="list-ingredients">
+          <ion-col size="6" class="ingredient-container" *ngFor="let ingredient of dataSourceObservable | async">
+            <mat-card id="{{ ingredient.name }}" [ngClass]="{'selected' : isSelected(ingredient)}" class="ingredient" ion-long-press [interval]="600" (click)="onIngredient(ingredient)" (pressed)="openSelection(ingredient)">
+              <mat-card-header>
+                <span class="ingredient-name">{{ ingredient.name }}</span>
+              </mat-card-header>
+      
+              <img mat-card-image src="{{ ingredient.photoUrl }}">
+      
+              <mat-card-content>
+                <div *ngIf="ingredient.unit != ''">1 {{ ingredient.unit }} = {{ this.roundPoints(ingredient.ratio) }} Point<span *ngIf="ingredient.ratio >=2">s</span></div>
+                <div *ngIf="ingredient.unit == ''">1 {{ ingredient.name }} = {{ ingredient.ratio }} Point<span *ngIf="ingredient.ratio >=2">s</span></div>
+              </mat-card-content>
+
+            </mat-card>
+          </ion-col>
+          <mat-paginator hidePageSize pageSize="8"></mat-paginator>
+          <ion-list id="list"></ion-list>
+
+          <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" id="infinite-scroll">
+            <ion-infinite-scroll-content
+              loadingSpinner="circular"
+              loadingText="Chargement des ingrédients">
+            </ion-infinite-scroll-content>
+          </ion-infinite-scroll>
+      </ion-row>
+  </ion-grid>
+</ion-content>

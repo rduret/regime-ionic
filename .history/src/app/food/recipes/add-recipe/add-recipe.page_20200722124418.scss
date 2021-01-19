@@ -1,0 +1,106 @@
+/***************** Général ***************/
+.mat-card .form-container{ display: flex;  flex-direction: row; }
+.mat-raised-button { color: #fff; background-color: #a22424de; margin-top: 25px;}
+.thumbnail{ vertical-align: middle;  border-radius: 50%;}
+
+
+/*********** Photo ************/
+.photo-container{ margin: auto !important; text-align: center; }
+.photo-container img{ max-width: 90%; } 
+.photo-container .mat-progress-spinner circle, .mat-spinner circle { stroke: #a22424de; }
+.photo-container button{
+    border: black 1px solid;
+    border-radius: 50%;
+    padding: 5px;
+    margin: 5px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    outline: none;
+}
+.photo-container button:active{background-color: #a22424de;}
+.photo-container ion-icon{ font-size: 25px; margin: 10px; }
+
+/************ Formulaire recette ************/
+.addRecipeForm{display: flex;  flex-direction: column;}
+
+/************* Formulaire ingrédients ***************/
+.ingredients-container{
+    margin-top: 50px;
+    margin-bottom: 25px;
+    border: solid 4px #949494;
+    border-radius: 3px;
+    padding: 30px 30px 30px 30px;
+}
+.ingredients-container .header{ text-align: center; }
+.ingredients-container .header h3{
+    color: #000;
+    font-size: 25px;
+    font-family: inherit;
+    font-weight: 400;
+}
+
+.addIngredient-form{ display: flex; flex-direction: row; margin-bottom: 30px; }
+.addIngredient-form .ingredientName-field{ max-width: 50%; }
+.addIngredient-form .ingredientQuantity-field{ max-width: 30%; margin-left: 20px; }
+.addIngredient-form .ingredients-container .mat-form-field{ margin-bottom: 35px; }
+
+.addIngredient-form .btn-add-circle{
+    position: relative;
+    top: 20px;
+    background-color: transparent; 
+    border: none; margin-left: 10px; 
+    height: fit-content;
+}
+.addIngredient-form .btn-add-circle:enabled{color: #a22424}
+.mat-option .thumbnail{margin-right: 5px;}
+
+/************* Liste des ingrédients ***************/
+.header-row{ display: flex; justify-content: space-between; padding-right: 40px;}
+.mat-divider{ position: initial !important; margin: 10px 0 20px 0;}
+
+
+
+.ingredient-single{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    margin-bottom: 10px;
+    padding-right: 50px;
+}
+
+.ingredient-single span{padding-top: 8px;}
+
+.ingredient-single button{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 85%;
+    background: none;
+    border: none;
+    margin-top: 3px;
+    border-radius: 50%;
+} 
+
+.ingredient-single button:hover{ background-color: #dedede; }
+
+.ingredient-single i{
+    position: relative;
+    top: 0;
+    left: -1px;
+    font-size: 21px;
+    color: #a22424;
+    cursor: pointer;
+}
+
+.total{text-align: center; margin-top: 20px;}
+
+.error-max-ingredients{
+    font-size: 12px;
+    margin-top: 25px;
+}
+
+
+
+
+
+

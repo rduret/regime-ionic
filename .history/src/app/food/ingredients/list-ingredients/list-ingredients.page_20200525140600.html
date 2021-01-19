@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Liste des ingrédients</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary">
+  <ion-grid>
+      <ion-row>
+        <mat-form-field class="search-bar">
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Rechercher un ingrédient">
+        </mat-form-field>
+  
+        <button type="button" mat-raised-button routerLink="ajouter-ingredient">
+              Ajouter un nouvel ingrédient
+        </button>
+      </ion-row>
+      
+      <ion-row class="list-ingredients-container">
+          <ion-col size="6" class="ingredient-container" *ngFor="let ingredient of dataSourceObservable | async">
+            <mat-card class="ingredient">
+              <mat-card-header>
+                <span class="ingredient-name">{{ ingredient.name }}</span>
+                <i (click)=openConfirmation(ingredient) class="material-icons">
+                  delete
+                </i>
+              </mat-card-header>
+      
+              <img mat-card-image [routerLink]= "ingredient.name" src="{{ ingredient.photoUrl }}">
+      
+              <mat-card-content>
+                <div *ngIf="ingredient.unit != ''">1 {{ ingredient.unit }} = {{ this.roundPoints(ingredient.ratio) }} Point<span *ngIf="ingredient.ratio >=2">s</span></div>
+                <div *ngIf="ingredient.unit == ''">1 {{ ingredient.name }} = {{ ingredient.ratio }} Point<span *ngIf="ingredient.ratio >=2">s</span></div>
+              </mat-card-content>
+
+            </mat-card>
+          </ion-col>
+        <!-- <mat-paginator hidePageSize pageSize="12"></mat-paginator> -->
+      </ion-row>
+  </ion-grid>
+</ion-content>

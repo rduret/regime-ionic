@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ recipe.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary">
+  <ion-grid>
+    <!-- Bannière -->
+    <ion-row>
+      <ion-col>
+        <img [src]="recipe.photoUrl">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

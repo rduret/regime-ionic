@@ -1,0 +1,76 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Mon suivi</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  color="secondary">
+  <ion-grid>
+    <div class="datas-container">
+      <ion-row>
+        <ion-col>
+          <mat-card>
+            <mat-card-title>Perte ou prise totale</mat-card-title>
+            <span class="separate"></span>
+            <mat-card-content [ngStyle]="{color: getColor(totalWeight)}">{{ totalWeight }}</mat-card-content>
+          </mat-card>
+        </ion-col>
+
+        <ion-col>
+          <mat-card>
+            <mat-card-title>Perte ou prise moyenne</mat-card-title>
+            <span class="separate"></span>
+            <mat-card-content [ngStyle]="{color: getColor(averageDiffWeight)}">{{ averageDiffWeight }}</mat-card-content>
+          </mat-card>
+        </ion-col>
+      </ion-row>
+
+
+      <ion-row>
+        <ion-col>
+          <mat-card>
+            <mat-card-title>Jours depuis le début</mat-card-title>
+            <span class="separate"></span>
+            <mat-card-content style = "color: #000">{{ daysSinceBeginning }}</mat-card-content>
+          </mat-card>
+        </ion-col>
+      </ion-row>
+    </div>
+
+
+    <div class="charts">
+      <ion-row>
+        <ion-col>
+          <mat-card class="chart-container" id="canvasWeightContainer" [hidden]=!chartWeight>
+            <canvas id="canvasWeight">{{ chartWeight }}</canvas>
+          </mat-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <mat-card class="chart-container" [hidden]=!chartLostWeight>
+            <canvas id="canvasLostWeight">{{ chartLostWeight }}</canvas>
+          </mat-card>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <div class="second-recap">
+      <button (click)="updateCharts()">dzad</button>
+      <ion-row>
+        <ion-col>
+          <mat-card class="goal" *ngIf="rest > 0">
+            Il vous reste encore <strong>{{ rest }}kg</strong> à perdre pour atteindre votre objectif !
+          </mat-card>
+    
+          <mat-card class="goal text-success" *ngIf="rest <= 0">
+              Bravo ! Vous avez atteint votre objectif fixé lors de l'inscription !
+          </mat-card>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,28 @@
+.photo-container{text-align: center;}
+img{max-width: 100%;}
+
+ion-icon{
+    font-size: 40px; 
+    margin: 10px;
+    border: black 1px solid;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+ion-icon:hover{
+    background-color: rgb(83, 83, 83);
+}
+
+.mat-progress-spinner{ margin: auto; }
+::ng-deep .mat-progress-spinner circle, .mat-spinner circle{ stroke: #a22424de; }
+
+.addIngredientForm{
+    display: flex;  
+    flex-direction: column;
+    align-items: center;
+}
+.mat-form-field{ margin-bottom: 10px; width: 90%; }
+.placeholder{ font-size: 14px !important; }
+.mat-focused .placeholder{ color: blue; }
+
+.mat-raised-button {color: #fff; background-color: #a22424de; margin-top: 5px; width: 45%;}

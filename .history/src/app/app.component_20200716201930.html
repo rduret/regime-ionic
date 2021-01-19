@@ -1,0 +1,27 @@
+<ion-app>
+  <ion-split-pane when="md" content-id="main-content">
+    <ion-menu contentId="main-content" swipeGesture="true" type="overlay">
+      <ion-content color="secondary">
+        <ion-list id="inbox-list">
+          <ion-list-header color="primary">
+            <ion-title>Régime</ion-title>
+            <a mat-button routerLink="auth/mon-compte">
+              <i class="material-icons">account_circle</i>
+            </a>
+          </ion-list-header>
+
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+              <ion-item (click)="selectedIndex = i" color="secondary" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">
+                <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+                <ion-label>{{ p.title }}</ion-label>
+              </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false">
+            <button mat-raised-button (click)="onSignOut()" style="cursor:pointer">Deconnexion</button>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

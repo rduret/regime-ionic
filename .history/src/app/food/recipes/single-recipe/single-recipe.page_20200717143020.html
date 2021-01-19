@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button routerLink="../"></ion-back-button>
+    </ion-buttons>
+    <div class="toolbar-title">
+      <ion-title>{{ recipe.name }}</ion-title>
+      <i class="material-icons edit-recipe" routerLink="modification">edit</i>
+      <i class="material-icons delete-recipe" (click)=openConfirmation()>delete</i>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary">
+  <!-- Bannière -->
+  <div  class="banner">
+    <img [src]="recipe.photoUrl">
+  </div>
+
+  <ion-grid>
+    <!-- Nbr de personnes et points -->
+    <ion-row>
+      <ion-col>
+        <div class="plus-recipe">
+          <div class="peoples">
+              <span (click)="minusPeoples()" class="minus"> - </span>
+              <span class="number">
+                  {{ tempPeoples }} <i class="material-icons">person</i>
+              </span>
+              <span (click)="plusPeoples()" class="plus"> + </span>
+              <div class="points">
+                <span>{{ roundRecipePoints((recipe.points / recipe.peoples * tempPeoples)) }} P</span>
+              </div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <!-- Liste des ingrédients -->
+    <ion-row>
+      <ion-col>
+        <mat-card class="list-ingredients-container">
+          <div class="header-row">
+              <span class="ingredient">Ingrédient</span>
+              <span class="quantity">Quantité</span>
+              <span class="points">Points</span>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="list-ingredients">
+              <div class="ingredient-single" *ngFor="let ingredient of recipe.listIngredients;">
+                  <div class="ingredient"><img class="thumbnail" aria-hidden [src]="ingredient.photoUrl" width="55" height="40"><span>{{ ingredient.name }}</span></div>
+                  <span *ngIf="ingredient.unit != ''" class="quantity">{{ (ingredient.quantity / recipe.peoples) * tempPeoples }} {{ ingredient.unit }}</span>
+                  <span *ngIf="ingredient.unit == ''" class="quantity">{{ ingredient.quantity * tempPeoples}}</span>
+
+                  <span class="points">{{ roundIngredientPoints((ingredient.points / recipe.peoples) * tempPeoples) }}</span>
+              </div>
+          </div>
+        </mat-card>
+      </ion-col>
+    </ion-row>
+
+
+
+  </ion-grid>
+</ion-content>

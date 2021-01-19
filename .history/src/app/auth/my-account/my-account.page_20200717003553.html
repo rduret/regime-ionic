@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Mon compte</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <mat-card>
+          <p><strong>Adresse mail </strong> : {{ email }} </p>
+          <p><strong>Objectif </strong> : {{ goal }}</p>
+          <a routerLink="modifier-mot-de-passe">Modifier mot de passe</a>
+        </mat-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

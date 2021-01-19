@@ -1,0 +1,70 @@
+.header-translucent-ios ion-toolbar {
+    --opacity: 1;
+}
+
+h2{font-weight: 300; color: #000;}
+
+span.separate{
+    background-color: #000;
+    display: block;;
+    margin-bottom: 50px;
+    width: 90px;
+    height: 1px;
+ }
+
+.first-recap{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.first-recap .datas-container{
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.first-recap .datas-container .mat-card{
+    width: 250px;
+    height: 200px;
+}
+
+.first-recap .datas-container .mat-card-title{
+    font-size: 1.2em;
+    text-align: center;
+    color: #a22424de;
+}
+
+.first-recap .datas-container .mat-card-content{
+    font-size: 3.5em;
+    text-align: center;
+    margin: 30px 0;
+}
+
+.first-recap .datas-container span.separate{
+    background-color: #a22424de;
+    display: block;
+    margin: auto;
+    width: 100px;
+    height: 1px;
+}
+
+.first-recap .charts{
+    width: 67%;
+    min-width: 400px;
+}
+
+.chart-container{
+    position: relative;
+}
+
+#canvasWeightContainer{
+    margin-bottom: 100px;
+}
+
+.second-recap{margin: auto; margin-top: 75px; max-width: 900px;}
+
+.second-recap .goal{font-size: 1.3em; text-align: center; letter-spacing: 1px;}
+
+.second-recap .goal strong{color: #a22424de;}

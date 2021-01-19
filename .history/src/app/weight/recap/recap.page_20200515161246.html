@@ -1,0 +1,75 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Mon suivi</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary">
+  <ion-grid>
+    <div class="datas-container">
+      <ion-row>
+        <ion-col>
+          <ion-card>
+            <ion-card-title>Perte ou prise totale</ion-card-title>
+            <span class="separate"></span>
+            <ion-card-content [ngStyle]="{color: getColor(totalWeight)}">{{ totalWeight }}</ion-card-content>
+          </ion-card>
+        </ion-col>
+
+        <ion-col>
+          <ion-card>
+            <ion-card-title>Perte ou prise moyenne</ion-card-title>
+            <span class="separate"></span>
+            <ion-card-content [ngStyle]="{color: getColor(averageDiffWeight)}">{{ averageDiffWeight }}</ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+
+      <ion-row>
+        <ion-col>
+          <ion-card>
+            <ion-card-title>Jours depuis le début</ion-card-title>
+            <span class="separate"></span>
+            <ion-card-content style = "color: #000">{{ daysSinceBeginning }}</ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </div>
+
+
+    <div class="charts">
+      <ion-row>
+        <ion-col>
+          <ion-card class="chart-container" id="canvasWeightContainer" [hidden]=!chartWeight>
+            <canvas id="canvasWeight">{{ chartWeight }}</canvas>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-card class="chart-container" [hidden]=!chartLostWeight>
+            <canvas id="canvasLostWeight">{{ chartLostWeight }}</canvas>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <div class="second-recap">
+      <ion-row>
+        <ion-col>
+          <ion-card class="goal" *ngIf="rest > 0">
+            Il vous reste encore <strong>{{ rest }}kg</strong> à perdre pour atteindre votre objectif !
+          </ion-card>
+    
+          <ion-card class="goal text-success" *ngIf="rest <= 0">
+              Bravo ! Vous avez atteint votre objectif fixé lors de l'inscription !
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ recipe.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary">
+  <ion-grid>
+    <!-- Bannière -->
+    <ion-row>
+      <ion-col>
+        <img [src]="recipe.photoUrl">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <div class="plus-recipe">
+        <div class="peoples">
+            <span (click)="minusPeoples()" class="minus"> - </span>
+            <span class="number">
+                {{ tempPeoples }}
+                <i class="material-icons">person</i>
+            </span>
+            <span (click)="plusPeoples()" class="plus"> + </span>
+        </div>
+        <div class="points">
+            <span>{{ roundRecipePoints((recipe.points / recipe.peoples * tempPeoples)) }}</span> Point<span *ngIf="roundRecipePoints((recipe.points / recipe.peoples * tempPeoples)) > 1">s</span>
+        </div>
+        <div>
+            <i class="material-icons edit-recipe" routerLink="modification">edit</i>
+            <i class="material-icons delete-recipe" (click)=openConfirmation()>delete</i>
+        </div>
+      </div>
+    </ion-row>
+  </ion-grid>
+</ion-content>

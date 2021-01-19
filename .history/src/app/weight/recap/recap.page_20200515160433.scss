@@ -1,0 +1,40 @@
+.header-translucent-ios ion-toolbar {
+    --opacity: 1;
+}
+
+h2{font-weight: 300; color: #000;}
+
+
+.datas-container .mat-card-title{
+    font-size: 1.2em;
+    text-align: center;
+    color: #a22424de;
+}
+
+.datas-container .mat-card-content{
+    font-size: 2.5em;
+    text-align: center;
+    margin-top: 20px;
+}
+
+span.separate{
+    background-color: #a22424de;
+    display: block;
+    margin: auto;
+    width: 100px;
+    height: 1px;
+}
+
+.chart-container{
+    position: relative;
+}
+
+#canvasWeightContainer{
+    margin-bottom: 100px;
+}
+
+.second-recap{margin: auto; margin-top: 75px; max-width: 900px;}
+
+.second-recap .goal{font-size: 1.3em; text-align: center; letter-spacing: 1px;}
+
+.second-recap .goal strong{color: #a22424de;}

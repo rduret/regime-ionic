@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <h1>Mon régime</h1>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card class="auth">
+          <ion-card-content>
+            <div class="formContainer">
+              <form class="signInForm" [formGroup]="signInForm" (ngSubmit)="signIn()">
+                <h2>Connexion</h2>
+                <mat-form-field>
+                  <input matInput type="email" placeholder="Adresse email" [errorStateMatcher]="matcher" formControlName="emailSignIn">
+                  <mat-error *ngIf="emailSignInFormControl.hasError('email') && !emailSignInFormControl.hasError('required')">
+                    Veuillez indiquer une <strong>adresse correcte</strong>
+                  </mat-error>
+                  <mat-error *ngIf="emailSignInFormControl.hasError('required')">
+                    Veuillez indiquer une adresse email
+                  </mat-error>
+                </mat-form-field>
+              
+                <mat-form-field class="">
+                  <input matInput type="password" placeholder="Mot de passe" [errorStateMatcher]="matcher" formControlName="passwordSignIn">
+                  <mat-error *ngIf="passwordSignInFormControl.hasError('pattern') && !passwordSignInFormControl.hasError('required')">
+                    Veuillez indiquer un mot de passe <strong>d'au moins 6 caractères</strong>
+                  </mat-error>
+                <mat-error *ngIf="passwordSignInFormControl.hasError('required')">
+                  Veuillez indiquer un mot de passe
+                </mat-error>
+                </mat-form-field>
+                <a routerLink="/auth/retrouver-mot-de-passe">Mot de passe oublié</a>
+                <a routerLink="/auth/inscription">S'inscrire</a>
+                <button mat-raised-button size="small" type="submit" [disabled]="signInForm.invalid">Valider</button>
+              </form>
+            </div>
+          </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-content>
+
+

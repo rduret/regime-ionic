@@ -1,0 +1,103 @@
+/* Toolbar */
+.toolbar-title{display: flex; flex-wrap: nowrap;}
+.toolbar-title ion-title{max-width: 80%;}
+.toolbar-title i{margin: 0 5px 0 5px;}
+
+/* Image */
+.banner{max-height: 250px;}
+.banner img{
+    clip-path: polygon(0px 0px, 100% 0, 100% 250px, 0px 250px); 
+    width: 100%;
+    height: inherit;
+}
+
+/* Indication nbr de personnes et points */
+.peoples{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: nowrap;
+    width: auto;
+    margin-bottom: 25px;
+}
+
+.peoples .plus{
+    padding: 7px 11px;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+    font-size: 1.3em;
+    background-color: #a22424de;
+    color: #fff;
+}
+
+.peoples .minus{
+    padding: 7px 14px;
+    font-size: 1.3em;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+    background-color: #a22424de;
+    color: #fff;
+}
+
+.peoples .number{
+    display: flex;
+    flex-wrap: nowrap;
+    border: 0.5px solid;
+    color: #000;
+    border-color: #c96161dc;
+    font-size: 1.3em; 
+    align-items: center;
+    padding: 0 20px 0 20px;
+}
+
+.plus-recipe .points{
+    position: absolute;
+    width: 19%;
+    left: 40.5%;
+    top: 44px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    background-color: #a22424de;
+    color: #fff;
+    text-align: center;
+    font-size: 15px;
+}
+
+/* Header de la liste des ingrédients */
+.header-row {display: flex; justify-content: space-around;}
+
+/*
+.header-row span.quantity{position: absolute; left: 30%}
+.header-row span.points{position: absolute; right: 32%;}
+ */
+
+/* Liste des ingrédients */
+.list-ingredients{margin-top: 50px;}
+.list-ingredients .ingredient-single{margin-top: 5px; margin-bottom: 10px; padding: 10px 25px; border-radius: 30px; background-color: #dedede;}
+.ingredient-single .ingredient span{display: inline-block; max-width: 30%;}
+.ingredient-single .thumbnail{border-radius: 50%; margin-right: 10px;}
+
+.list-ingredients span.quantity{
+    position: absolute;
+    display: inline-block;
+    max-width: 20%;
+    left: 30%; 
+    padding-top: 8px;
+}
+
+.list-ingredients span.points{
+    position: absolute;
+    right: 32%;
+    padding-top: 8px;
+    font-weight: bold;
+}
+
+
+.mat-divider-horizontal{
+    border-top-width: 7px;
+    border-color: #a22424de;
+    margin-top: 10px;
+    width: 80%;
+}

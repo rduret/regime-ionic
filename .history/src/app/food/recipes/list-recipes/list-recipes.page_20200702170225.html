@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar *ngIf="!selectMode" color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Liste des recettes</ion-title>
+  </ion-toolbar>
+  <ion-toolbar *ngIf="selectMode" class="selection-toolbar" color="primary">
+    <i (click)="closeSelection()" class="material-icons back">arrow_back</i>
+    <ion-title>
+      <p *ngIf="getSizeRecipesToDelete() > 1"> {{ getSizerecipesToDelete() }} recettes sélectionnées <i (click)="presentAlertConfirm()" class="material-icons">delete</i></p>
+      <p *ngIf="getSizeRecipesToDelete() <= 1"> {{ getSizerecipesToDelete() }} recette sélectionnée <i (click)="presentAlertConfirm()" class="material-icons">delete</i></p>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary">
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+  <ion-fab-button routerLink="ajouter-recette">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+  </ion-fab>
+  <ion-grid>
+      <ion-row>
+        <mat-form-field class="search-bar">
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Rechercher une recette">
+        </mat-form-field>
+      </ion-row>
+
+      <ion-row class="list-recipes-container" id="list-recipes">
+          <ion-col size="6" class="recipe-container" *ngFor="let recipe of dataSourceObservable | async">
+            <mat-card disabled="true" id="{{ recipe.name }}" [ngClass]="{'selected' : isSelected(recipe)}" class="recipes" ion-long-press (click)="onRecipe(recipe)" (longPressed)="openSelection(recipe)" (pressEnded)="released()">
+              <mat-card-header>
+                <span class="recipe-name">{{ recipe.name }}</span>
+              </mat-card-header>
+      
+              <img mat-card-image src="{{ recipe.photoUrl }}">
+      
+              <mat-card-content>
+                1 <ion-icon name="pizza"></ion-icon> = {{ roundPoints(recipe.points / recipe.peoples) }} Point<span *ngIf="recipe.points/recipe.peoples <=2">s</span>
+              </mat-card-content>
+            </mat-card>
+          </ion-col>
+
+          <mat-paginator hidePageSize pageSize="8"></mat-paginator>
+
+          <ion-list id="list"></ion-list>
+
+          <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" id="infinite-scroll">
+            <ion-infinite-scroll-content
+              loadingSpinner="circular"
+              loadingText="Chargement des recettes">
+            </ion-infinite-scroll-content>
+          </ion-infinite-scroll>
+      </ion-row>
+  </ion-grid>
+</ion-content>

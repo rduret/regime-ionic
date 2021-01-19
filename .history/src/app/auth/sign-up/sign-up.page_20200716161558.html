@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Inscription</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <mat-card class="signUpContainer">
+          <mat-vertical-stepper linear #stepper>
+            <mat-step [stepControl]="emailSignUp">
+              <form [formGroup]="emailSignUp">
+                <ng-template matStepLabel>Adresse mail</ng-template>
+                <mat-form-field>
+                  <input matInput placeholder="Votre adresse mail" formControlName="emailSignUpFormControl" required>
+                </mat-form-field>
+                <mat-error
+                  *ngIf="emailSignUpFormControl.hasError('email') && !emailSignUpFormControl.hasError('required')">
+                  Veuillez indiquer une <strong>adresse correcte</strong>
+                </mat-error>
+                <div>
+                  <button mat-raised-button matStepperNext>Suivant</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step [stepControl]="passwordSignUp">
+              <form [formGroup]="passwordSignUp">
+                <ng-template matStepLabel>Mot de passe</ng-template>
+                <mat-form-field>
+                  <input matInput type="password" placeholder="Votre mot de passe" formControlName="passwordSignUpFormControl" required>
+                </mat-form-field>
+                <mat-error
+                  *ngIf="passwordSignUpFormControl.hasError('pattern') && !passwordSignUpFormControl.hasError('required')">
+                  Veuillez indiquer un mot de passe <strong>d'au moins 6 caractères</strong>
+                </mat-error>
+                <div>
+                  <button mat-raised-button matStepperNext>Suivant</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step [stepControl]="detailsSignUp">
+              <form [formGroup]="detailsSignUp">
+                <ng-template matStepLabel>Détails</ng-template>
+                <mat-form-field>
+                  <input placeholder="Votre objectif de masse" matInput formControlName="goalFormControl" required>
+                </mat-form-field>
+                <mat-error *ngIf="goalFormControl.hasError('pattern') && !goalFormControl.hasError('required')">
+                  Veuillez indiquer un <strong>nombre</strong>
+                </mat-error>
+                <br />
+                <mat-form-field>
+                  <input placeholder="Votre masse actuelle" matInput formControlName="firstWeightFormControl" required>
+                </mat-form-field>
+                <mat-error
+                  *ngIf="firstWeightFormControl.hasError('pattern') && !firstWeightFormControl.hasError('required')">
+                  Veuillez indiquer un <strong>nombre</strong>
+                </mat-error>
+                <div>
+                  <button mat-raised-button matStepperNext>Suivant</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step>
+              <ng-template matStepLabel>Valider l'inscription</ng-template>
+              <div>
+                <button mat-raised-button (click)="signUp()"
+                  [disabled]="emailSignUp.invalid || passwordSignUp.invalid">S'inscrire</button>
+              </div>
+            </mat-step>
+          </mat-vertical-stepper>
+        </mat-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

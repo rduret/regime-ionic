@@ -1,0 +1,32 @@
+ion-toolbar h1{
+    font-size: 1.5em;
+    margin-left: 25px;
+}
+
+.header-translucent-ios ion-toolbar {
+    --opacity: 1;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+form h2{
+    font-size: 1.3em;
+    color: #a22424;
+    margin-bottom: 10px;
+}
+
+form a{
+    margin-top: 5px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.mat-raised-button{
+    color: #fff;  
+    background-color: #a22424;
+    margin: auto;
+    margin-top: 20px;
+}

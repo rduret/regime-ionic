@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Mofification de l'ingrédient "{{ ingredient.name }}"</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <mat-card>
+            <div class="photo-container">
+              <img *ngIf="!photoIsUploading" [src]="photoShow">
+              <mat-progress-spinner *ngIf="photoIsUploading" mode="indeterminate"></mat-progress-spinner>
+              <button><ion-icon name="camera-outline" (click)="takePhoto()"></ion-icon></button>
+              <button><ion-icon name="image-outline" (click)="selectPhoto()"></ion-icon></button>
+            </div>
+
+            <form [formGroup]="addIngredientForm" class="addIngredientForm">
+              <mat-form-field class="addForm-field">
+                <input matInput class="ingredient-name" formControlName="name">
+                <mat-placeholder class="placeholder">Nom de l'ingrédient</mat-placeholder>
+                <mat-error *ngIf="nameFormControl.hasError('required')">
+                  Un nom est nécessaire
+                </mat-error>
+                <mat-error *ngIf="nameFormControl.hasError('alreadyCreated')">
+                  Cet ingrédient a déjà été ajouté
+                </mat-error>
+              </mat-form-field>
+        
+              <mat-form-field class="addForm-field">
+                <mat-label>Unité</mat-label>
+                <mat-select matInput formControlName="unit">
+                  <mat-option *ngFor="let unit of units" [value]="unit">
+                    {{unit}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="unitFormControl.hasError('required')">
+                  Veuillez indiquer une dose
+                </mat-error>
+              </mat-form-field>
+        
+              <mat-form-field class="addForm-field">
+                <input matInput type="number" formControlName="numberUnit">
+                <mat-placeholder class="placeholder">Nombre d'unités</mat-placeholder>
+                <mat-error *ngIf="numberUnitFormControl.hasError('required')">
+                  Veuillez indiquer un nombre d'unités pour pouvoir calculer les points
+                </mat-error>
+                <mat-error *ngIf="numberUnitFormControl.hasError('pattern')">
+                  Veuillez indiquez une valeur numérique
+                </mat-error>
+              </mat-form-field>
+        
+              <mat-form-field class="addForm-field">
+                <input matInput type="number" formControlName="points">
+                <mat-placeholder class="placeholder">Nombre de points pour la quantité d'unités choisie</mat-placeholder>
+                <mat-error *ngIf="pointsFormControl.hasError('required')">
+                  Veuillez indiquer le nombre de points correspondant au nombre d'unités choisi
+                </mat-error>
+                <mat-error *ngIf="pointsFormControl.hasError('pattern')">
+                  Veuillez indiquez une valeur numérique
+                </mat-error>
+              </mat-form-field>
+        
+              <button type="button" mat-raised-button (click)="onEditIngredient()" [disabled]="addIngredientForm.invalid">
+                Ajouter
+              </button>
+            </form>
+
+          <!-- <div *ngIf="confirmation" class="alert alert-success" role="alert">
+            {{ confirmation }} <div><a routerLink="/alimentation/ingredients">Voir la liste</a></div>
+          </div> -->
+        </mat-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
