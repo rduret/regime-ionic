@@ -85,7 +85,7 @@ export class ListRecipesPage implements OnInit {
 
   /**************************************************** PAGINATOR ****************************************************/
   //Décide ou non de rajouter des ingrédients dans le paginator
-  async loadData() {
+  async loadData(event) {
     if (this.lengthPaginator < this.listRecipes.length)   //Si il reste des recettes on augmente le nombre d'el de la page
     {
       await this.wait(1000);

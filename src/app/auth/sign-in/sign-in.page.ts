@@ -15,6 +15,7 @@ const { App } = Plugins;
 })
 export class SignInPage implements OnInit {
 
+  matcher;
   signInForm: FormGroup;
 
   emailSignInFormControl: FormControl;

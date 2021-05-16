@@ -38,6 +38,7 @@ export class ListMeasuresPage implements OnInit {
  dateFormControl: FormControl;
 
  //edit form
+ expandedMeasure;
  dateEditFormControl: FormControl;
  weightEditFormControl: FormControl;
  editedDateValue: string;                                //La date actuelle de la mesure que l'on modifie
@@ -98,7 +99,7 @@ export class ListMeasuresPage implements OnInit {
 
     //////////////////////////  PAGINATOR ////////////////////////////
   //Charge les données dans le paginator
-  async loadData() {
+  async loadData(event) {
     if (this.lengthPaginator < this.listMeasures.length)   //Si il reste des ingrédients on augmente le nombre d'el de la page
     {
       await this.wait(1000);
